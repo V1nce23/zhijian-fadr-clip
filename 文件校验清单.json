@@ -24,8 +24,10 @@
       "path": "system/models/fadr_clip/model.safetensors",
       "size_bytes": 1233377096,
       "sha256": "9da257ce6a69cd22371c7f36a3ea5702b860da2354e942ea3d42689fd3caf0e7",
-      "download_url": "https://github.com/V1nce23/zhijian-fadr-clip/releases/download/v0.16.0/model.safetensors",
-      "publication_status": "release-resource"
+      "download_url": "https://github.com/V1nce23/zhijian-fadr-clip/releases/download/v0.16.0/fadr-clip-best-weights-v0.16.0.zip",
+      "publication_status": "release-resource",
+      "archive_format": "zip",
+      "archive_member": "model.safetensors"
     }
   ],
   "file_count": 160,
@@ -43,8 +45,8 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 9960,
-      "sha256": "8b301c0e696f73b5b4bac659986696b05e45ac35c071f4eb263b4323f09d769a"
+      "size_bytes": 10051,
+      "sha256": "86edb5db827eef0f9b03591bf728e25c2aed2a6f24ff69a71ffb6e60a421f3ff"
     },
     {
       "path": "system/.env.example",
@@ -828,8 +830,8 @@
     },
     {
       "path": "提交与模型资源说明.md",
-      "size_bytes": 3768,
-      "sha256": "dfe7dd8711a6343cc693f4f082b6900fa100aa27f37be798fa77d05d9f1e17a2"
+      "size_bytes": 3957,
+      "sha256": "0718aa3b7f22ea544fcf035c87ff478b5c7a7d6299263739490c109627d9416d"
     }
   ]
 }

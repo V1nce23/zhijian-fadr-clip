@@ -8,9 +8,9 @@
 
 发布资源：<https://github.com/V1nce23/zhijian-fadr-clip/releases/tag/v0.16.0>
 
-GitHub 源码包含演示样例、人脸对齐模型和系统实现。首次运行前，请从上述 Release 下载 `model.safetensors`，放到 `system/models/fadr_clip/model.safetensors`，并按下文核对 SHA-256。主权重使用独立附件分发，不包含在 GitHub 自动生成的源码 ZIP 中。
+GitHub 源码包含演示样例、人脸对齐模型和系统实现。首次运行前，请从上述 Release 下载 `fadr-clip-best-weights-v0.16.0.zip`，将其中的 `model.safetensors` 解压到 `system/models/fadr_clip/model.safetensors`，并按下文核对 SHA-256。主权重使用无损 ZIP 独立分发，不包含在 GitHub 自动生成的源码 ZIP 中。
 
-[下载 FADR-CLIP 最佳主模型权重](https://github.com/V1nce23/zhijian-fadr-clip/releases/download/v0.16.0/model.safetensors)
+[下载 FADR-CLIP 最佳主模型权重（无损 ZIP）](https://github.com/V1nce23/zhijian-fadr-clip/releases/download/v0.16.0/fadr-clip-best-weights-v0.16.0.zip)
 
 ## 1. 作品功能
 
