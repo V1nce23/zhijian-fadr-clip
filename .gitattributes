@@ -1,0 +1,11 @@
+# Preserve release bytes so file checksums are identical after download.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.ttf binary
+*.dat binary
+*.safetensors binary
+**/OFL.txt -whitespace
+**/*LICENSE.txt -whitespace

@@ -1,0 +1,4 @@
+Academic Research Use Notice
+
+This cleaned release is prepared for academic research and manuscript
+reproducibility. Add the final license terms before public distribution.

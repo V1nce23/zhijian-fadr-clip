@@ -1,0 +1,8 @@
+node_modules
+.next
+npm-debug.log
+tests
+playwright-report
+test-results
+
+# Exclude retired artwork paths from deployment.

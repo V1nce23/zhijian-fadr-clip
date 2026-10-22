@@ -1,0 +1,41 @@
+{
+  "models": [
+    {
+      "kind": "local_fadr_clip",
+      "destination": "fadr_clip",
+      "source_checkpoint_sha256": "b0ba99d06f0399e544bd45dbff4cdaa48f771d2324e3bacc78007fbff0597a09",
+      "source": "Supplied FADR_CLIP/weights/fadr_clip_best_main_model.pth; export with tools/prepare_fadr_clip.py",
+      "files": [
+        {
+          "path": "model.safetensors",
+          "sha256": "9da257ce6a69cd22371c7f36a3ea5702b860da2354e942ea3d42689fd3caf0e7",
+          "size": 1233377096
+        },
+        {
+          "path": "model_config.json",
+          "sha256": "e01bca86a48b87e9d3219b81a37455facf7641793b4c995db0c4170d79a6919b",
+          "size": 2120
+        },
+        {
+          "path": "manifest.json",
+          "size": 659,
+          "sha256": "d015d20f4f208615d7f845793c4a178945b1c98dd2d25b177254ac5f07932ffa"
+        }
+      ]
+    },
+    {
+      "kind": "github_asset",
+      "repository": "SCLBD/DeepfakeBench",
+      "release": "v1.0.0",
+      "destination": "face",
+      "license": "CC-BY-NC-4.0",
+      "files": [
+        {
+          "path": "shape_predictor_81_face_landmarks.dat",
+          "size": 19743860,
+          "sha256": "8cae4375589dd915d9a0a881101bed1bbb4e9887e35e63b024388f1ca25ff869"
+        }
+      ]
+    }
+  ]
+}

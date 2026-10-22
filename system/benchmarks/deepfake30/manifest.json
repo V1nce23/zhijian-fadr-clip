@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "selection": "Ten samples per modality, balanced as five fake and five real. Image samples are five matched real/fake face pairs; test partitions and distinct identities or generators are preferred for other modalities.",
+  "sources": {
+    "image": {
+      "repository": "Sowaiba01/Deepfake",
+      "revision": "f1a825712d4c8672fd5246ec61592391aa9c32c1",
+      "license": "MIT"
+    },
+    "video": {
+      "repository": "angads24/deepfake-video",
+      "revision": "3470af66b50e6d715f108bdfa67342907137e1f4",
+      "license": "CC-BY-SA-4.0"
+    }
+  },
+  "samples": [
+    {
+      "id": "image-fake-01",
+      "media_type": "image",
+      "label": "fake",
+      "pair_id": "00000",
+      "path": "fake/fake_00000.jpg",
+      "size": 17620,
+      "sha256": "c69d7dc0e14fbb4cde40647c31480a09f233fbefd077bcc00963f7a3832335f5"
+    },
+    {
+      "id": "image-fake-02",
+      "media_type": "image",
+      "label": "fake",
+      "pair_id": "01084",
+      "path": "fake/fake_01084.jpg",
+      "size": 21575,
+      "sha256": "392ab3e572e759a668c2ea38bc7dcd6806198546654136016580c5853af050a1"
+    },
+    {
+      "id": "image-fake-03",
+      "media_type": "image",
+      "label": "fake",
+      "pair_id": "02712",
+      "path": "fake/fake_02712.jpg",
+      "size": 27736,
+      "sha256": "43344e42ae2cd41f65a397af4af74e8be73bd2a33d19be4803eab76a8b72b3e5"
+    },
+    {
+      "id": "image-fake-04",
+      "media_type": "image",
+      "label": "fake",
+      "pair_id": "04068",
+      "path": "fake/fake_04068.jpg",
+      "size": 27831,
+      "sha256": "6a4a2a0c93d70768d35a56c0bd24e4eaf74371b40008c2dcbb32cda305688c66"
+    },
+    {
+      "id": "image-fake-05",
+      "media_type": "image",
+      "label": "fake",
+      "pair_id": "05425",
+      "path": "fake/fake_05425.jpg",
+      "size": 18615,
+      "sha256": "a57ece86dec4c0a36a5ca51acc5263a40b5105e8b9a66aba25900f6f4f22fffa"
+    },
+    {
+      "id": "image-real-01",
+      "media_type": "image",
+      "label": "real",
+      "pair_id": "00000",
+      "path": "real/real_00000.jpg",
+      "size": 21912,
+      "sha256": "ee7d2146d18103deb225725acf7fe75593ce35fa2349fc611c1d9a49bbcf0953"
+    },
+    {
+      "id": "image-real-02",
+      "media_type": "image",
+      "label": "real",
+      "pair_id": "01084",
+      "path": "real/real_01084.jpg",
+      "size": 24789,
+      "sha256": "fed512243eaae6e6ec71f8d1ef79d0e7bcfddcfbe16b255f2482f893038fd6fb"
+    },
+    {
+      "id": "image-real-03",
+      "media_type": "image",
+      "label": "real",
+      "pair_id": "02712",
+      "path": "real/real_02712.jpg",
+      "size": 35772,
+      "sha256": "c9a5b61fcf819eda7f51da819059cc98ae9fa953c7bd657e3ca133eaae682ffe"
+    },
+    {
+      "id": "image-real-04",
+      "media_type": "image",
+      "label": "real",
+      "pair_id": "04068",
+      "path": "real/real_04068.jpg",
+      "size": 33988,
+      "sha256": "102538b2a7259f9188babd61a26dc5783f8951ed4ba1e1d37aec390e72030f5b"
+    },
+    {
+      "id": "image-real-05",
+      "media_type": "image",
+      "label": "real",
+      "pair_id": "05425",
+      "path": "real/real_05425.jpg",
+      "size": 22893,
+      "sha256": "f22d6af61ff1026afd0262d1540ab5bd292f915ee75f8a7936da95272eee8c59"
+    },
+    {
+      "id": "video-fake-01",
+      "media_type": "video",
+      "label": "fake",
+      "path": "dataset/fake/02_13__secret_conversation__CP5HFV3K.mp4",
+      "sha256": "14051da5f20c0e2a5dafa395b7d6c6d27cd205089c89e837cd210d0684315bd8"
+    },
+    {
+      "id": "video-fake-02",
+      "media_type": "video",
+      "label": "fake",
+      "path": "dataset/fake/02_15__secret_conversation__MZWH8ATN.mp4",
+      "sha256": "eec1bb4feaf70f2728a40ca38b20aa64cf60f329b3bfadeaec08d25f3c5b3da3"
+    },
+    {
+      "id": "video-fake-03",
+      "media_type": "video",
+      "label": "fake",
+      "path": "dataset/fake/01_02__walk_down_hall_angry__YVGY8LOK.mp4",
+      "sha256": "2a0882fc4a09c0ec3b18580e0f0d292b235dd1f12ada6dad76a0181a9ed20d1b"
+    },
+    {
+      "id": "video-fake-04",
+      "media_type": "video",
+      "label": "fake",
+      "path": "dataset/fake/01_21__walk_down_hall_angry__03X7CELV.mp4",
+      "sha256": "9b39f557664ac9f8e0e1645b0620e97880f522ef2b14da7339ff95968c7ddf0c"
+    },
+    {
+      "id": "video-fake-05",
+      "media_type": "video",
+      "label": "fake",
+      "path": "dataset/fake/02_07__walk_down_hall_angry__U7DEOZNV.mp4",
+      "sha256": "f497e9f06a0d406157afa26248252e8826acacf8836af474d5f18421be4e457c"
+    },
+    {
+      "id": "video-real-01",
+      "media_type": "video",
+      "label": "real",
+      "path": "dataset/real/10__exit_phone_room.mp4",
+      "sha256": "d547ed1ac5daae9da473b9170d5282b3e9ff810b933e4fb8d44a63260a91f9e2"
+    },
+    {
+      "id": "video-real-02",
+      "media_type": "video",
+      "label": "real",
+      "path": "dataset/real/01__walk_down_hall_angry.mp4",
+      "sha256": "2899bccb08e2e76cfac5a2616441ab98506866dcfd71d6df692f921ae3639482"
+    },
+    {
+      "id": "video-real-03",
+      "media_type": "video",
+      "label": "real",
+      "path": "dataset/real/01__exit_phone_room.mp4",
+      "sha256": "7161b7c0d3f8a45b59f4e182b4d1e38ebe23329259852b3a353a3a7468debf33"
+    },
+    {
+      "id": "video-real-04",
+      "media_type": "video",
+      "label": "real",
+      "path": "dataset/real/15__exit_phone_room.mp4",
+      "sha256": "0b290e30036f9bc682318001b5850eb01e905d3cb29e0907106b9c0eeb2a53bd"
+    },
+    {
+      "id": "video-real-05",
+      "media_type": "video",
+      "label": "real",
+      "path": "dataset/real/06__exit_phone_room.mp4",
+      "sha256": "f562fa2df5d4e50b1df582a15988b660b364b4d3db6e3efd4c65c61b320eb70d"
+    }
+  ]
+}

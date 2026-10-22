@@ -1,0 +1,10 @@
+# Preserve the verified release files without line-ending conversion.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.mp4 binary
+*.ttf binary
+*.dat binary
+*.safetensors binary

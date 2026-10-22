@@ -1,0 +1,22 @@
+{
+  "model": "FADR-CLIP",
+  "version": "best-b0ba99d0",
+  "source_checkpoint_sha256": "b0ba99d06f0399e544bd45dbff4cdaa48f771d2324e3bacc78007fbff0597a09",
+  "selection_metric": "auc",
+  "selection_dataset": "FaceForensics++",
+  "selection_value": 0.9852460551009968,
+  "epoch": 0,
+  "global_step": 1796,
+  "tensor_count": 543,
+  "tensor_values_unchanged": true,
+  "files": {
+    "model.safetensors": {
+      "sha256": "9da257ce6a69cd22371c7f36a3ea5702b860da2354e942ea3d42689fd3caf0e7",
+      "size": 1233377096
+    },
+    "model_config.json": {
+      "sha256": "e01bca86a48b87e9d3219b81a37455facf7641793b4c995db0c4170d79a6919b",
+      "size": 2120
+    }
+  }
+}

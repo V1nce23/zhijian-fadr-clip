@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc",
+  "original_filename": "NotoSansSC[wght].ttf",
+  "original_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+  "conversion": "fontTools instantiateVariableFont wght=400; no glyph changes",
+  "font_sha256": "ea959fdc353a54a08a9080c3e67d30895c47577b05479b2ba4133aa656f2c43d",
+  "license": "SIL Open Font License 1.1"
+}

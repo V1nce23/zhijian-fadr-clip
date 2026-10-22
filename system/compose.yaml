@@ -1,0 +1,152 @@
+name: deeptrace
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: deeptrace
+      POSTGRES_USER: deeptrace
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-deeptrace-local-db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U deeptrace -d deeptrace"]
+      interval: 15s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 15s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-deeptrace}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-deeptrace-local-secret}
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 15s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./services/api
+      network: host
+    command:
+      - /bin/sh
+      - -c
+      - alembic upgrade head && python -m app.cli seed-admin && uvicorn app.main:app --host 0.0.0.0 --port 8000
+    environment: &api-environment
+      DATABASE_URL: postgresql+psycopg://deeptrace:${POSTGRES_PASSWORD:-deeptrace-local-db}@postgres:5432/deeptrace
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      S3_ENDPOINT_URL: http://minio:9000
+      S3_PUBLIC_ENDPOINT_URL: ${S3_PUBLIC_ENDPOINT_URL:-http://localhost:9000}
+      S3_ACCESS_KEY: ${MINIO_ROOT_USER:-deeptrace}
+      S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-deeptrace-local-secret}
+      S3_BUCKET: deeptrace-uploads
+      COOKIE_SECURE: "false"
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@deeptrace.example.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-DeepTrace123!}
+      ADMIN_NAME: ${ADMIN_NAME:-系统管理员}
+      DETECTOR_QUEUE: ${DETECTOR_QUEUE:-detect.gpu}
+      DETECTOR_MODELS_ROOT: /models
+      DETECTOR_DEVICE: ${DETECTOR_DEVICE:-auto}
+      DETECTOR_LOCAL_FILES_ONLY: "true"
+      DETECTOR_TIMEOUT_SECONDS: ${DETECTOR_TIMEOUT_SECONDS:-120}
+      ANALYSIS_TIMEOUT_SECONDS: ${ANALYSIS_TIMEOUT_SECONDS:-900}
+    ports:
+      - "8100:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/v1/health/ready"]
+      interval: 15s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
+    restart: unless-stopped
+
+  dispatcher:
+    build:
+      context: ./services/api
+      network: host
+    command: ["python", "-m", "app.dispatcher"]
+    environment:
+      <<: *api-environment
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  worker-gpu:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile.inference
+      network: host
+    command: ["celery", "-A", "app.celery_app:celery_app", "worker", "--loglevel=INFO", "--concurrency=1", "--queues=detect.gpu"]
+    environment:
+      <<: *api-environment
+      DETECTOR_QUEUE: detect.gpu
+      DETECTOR_DEVICE: cuda
+    volumes:
+      - ./models:/models:ro
+    gpus: all
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      network: host
+      args:
+        API_INTERNAL_URL: http://api:8000
+    environment:
+      API_INTERNAL_URL: http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/login').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
